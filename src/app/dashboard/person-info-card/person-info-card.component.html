@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Prateek Gangopadhyay</mat-card-title>
+    <mat-card-subtitle>Sr. Associate - CDE (418220)</mat-card-subtitle>
+    <mat-card-subtitle>Unitech, G3 - 5th Floor, Kolkata</mat-card-subtitle>
+  </mat-card-header>
+  <!-- <img mat-card-image
+    src="https://media-exp1.licdn.com/dms/image/C5603AQHdHBt4yFySOQ/profile-displayphoto-shrink_200_200/0/1604400186283?e=1622073600&v=beta&t=MdblU94sEa9e92mqIqGDGe_mtYzVoev4KARF5helna4"> -->
+    <webcam [height]="300" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+    [imageQuality]="1" (initError)="handleInitError($event)"></webcam>
+  <mat-card-content class="text-center">
+    <button mat-mini-fab color="primary" (click)="triggerSnapshot()">
+      <mat-icon>camera</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>

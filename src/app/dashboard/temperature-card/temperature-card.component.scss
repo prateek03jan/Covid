@@ -1,0 +1,41 @@
+.current-body-temperature {
+    font-size    : 120px;
+    padding-top  : 100px;
+    padding-right: 10px;
+}
+
+.current-body-temperature-display {
+    text-transform: uppercase;
+    padding-top   : 60px;
+    padding-right : 10px;
+    font-size     : 14px;
+}
+
+.red {
+    background-image: linear-gradient(178.2deg, rgba(118, 8, 23, 1) 10.9%, rgba(158, 12, 33, 1) 62.6%);
+}
+
+.green {
+    background-image: linear-gradient(171.8deg, rgba(5, 111, 146, 1) 13.5%, rgba(6, 57, 84, 1) 78.6%);
+    font-weight     : 100;
+}
+
+.outer-container {
+    text-align   : right;
+    color        : #ffffff;
+    border-radius: 10px;
+    margin-top   : 20px;
+    width        : 96%;
+    height       : 240px;
+}
+
+.icon-container {
+    color   : #ffffff;
+    position: absolute;
+
+    >mat-icon {
+        font-size  : 170px;
+        padding-top: 35px;
+        margin-left: -25px;
+    }
+}
