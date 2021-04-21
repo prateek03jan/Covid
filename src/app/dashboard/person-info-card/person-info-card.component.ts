@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { HttpClient } from '@angular/common/http';
+import { PersonInformation } from 'src/app/models/person';
 
 @Component({
   selector: 'app-person-info-card',
@@ -10,10 +11,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PersonInfoCardComponent implements OnInit {
 
+  private getPersonInfoURL = 'http://smartscanner-api.azurewebsites.net/api/smartScanner/getPersonDetails';
+  personInformation?: PersonInformation;
   private trigger: Subject<void> = new Subject<void>();
   public multipleWebcamsAvailable = false;
   webcamImage: WebcamImage | undefined;
   public errors: WebcamInitError[] = [];
+  @Output() onPersonInfoReceived = new EventEmitter<PersonInformation>();
 
   constructor(private http: HttpClient) { }
 
@@ -35,10 +39,11 @@ export class PersonInfoCardComponent implements OnInit {
   public handleImage(webcamImage: WebcamImage): void {
     console.info('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
-
-    this.http.post('https://api.imgur.com/3/image', this.webcamImage).subscribe(res=> {
-      debugger;
-      console.log(res);
+    console.log(webcamImage);
+    var obj = { image: this.webcamImage.imageAsBase64 };
+    this.http.post(this.getPersonInfoURL, obj).subscribe(res => {
+      this.personInformation = res;
+      this.onPersonInfoReceived.emit(this.personInformation);
     });
   }
 

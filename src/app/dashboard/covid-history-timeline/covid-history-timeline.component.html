@@ -1,14 +1,14 @@
   <mzd-timeline [alternateSide]="false">
-    <mzd-timeline-content [card]="true" *ngFor="let data of covidHistories">
+    <mzd-timeline-content [card]="true" *ngFor="let data of covidHistory">
       <mzd-icon></mzd-icon>
       <mat-card>
         <mat-card-header>
           <div mat-card-avatar class="warning-icon"></div>
           <mat-card-title>
-            {{data.headline}}
+            {{data.status}}
           </mat-card-title>
           <mat-card-subtitle>
-            {{data.date}}
+            {{data.date | date: 'mediumDate'}}
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
