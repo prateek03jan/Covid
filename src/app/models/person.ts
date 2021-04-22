@@ -4,6 +4,8 @@ export class PersonDetails {
     id?: string;
     lName?: string;
     personId?: string;
+    designation?: string;
+    associateId?: string;
 }
 
 export class CovidInfo {
