@@ -2,11 +2,12 @@
   <mat-card-header>
     <div mat-card-avatar class="example-header-image" [style.background-image]="'url(' + webcamImage?.imageAsDataUrl  + ')'"></div>
     <mat-card-title>{{personInformation?.personDetails?.fName}} {{personInformation?.personDetails?.lName}}</mat-card-title>
-    <mat-card-subtitle>{{personInformation?.personDetails?.designation}} ({{personInformation?.personDetails?.associateId}})</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="personInformation?.personDetails?.associateId">{{personInformation?.personDetails?.designation}} ({{personInformation?.personDetails?.associateId}})</mat-card-subtitle>
     <mat-card-subtitle *ngIf="personInformation?.personDetails?.adhaarNo">Aadhar - {{personInformation?.personDetails?.adhaarNo}}</mat-card-subtitle>
   </mat-card-header>
-    <webcam [height]="300" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+    <webcam *ngIf="!webcamImage" [height]="300" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
     [imageQuality]="1" (initError)="handleInitError($event)"></webcam>
+    <img mat-card-image *ngIf="webcamImage" src="{{webcamImage.imageAsDataUrl}}">
   <mat-card-content class="text-center">
     <button mat-mini-fab color="primary" (click)="triggerSnapshot()">
       <mat-icon>camera</mat-icon>

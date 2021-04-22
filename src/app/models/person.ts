@@ -6,6 +6,13 @@ export class PersonDetails {
     personId?: string;
     designation?: string;
     associateId?: string;
+    temperature?: Temperature;
+    officeLocation?: string;
+}
+
+export class Temperature {
+    maxTemp?: number;
+    currentTemp?: number;
 }
 
 export class CovidInfo {

@@ -1,7 +1,8 @@
-<div [class]="temperature > 98 ? 'red' : 'green'" class="outer-container">
+<div [class]="temperatureDetails?.currentTemp > temperatureDetails?.maxTemp ? 'red' : 'green'" 
+  class="outer-container">
   <div class="icon-container">
     <mat-icon>thermostat</mat-icon>
   </div>
-  <div class="current-body-temperature">{{temperature}}</div>
+  <div class="current-body-temperature">{{temperatureDetails?.currentTemp}}</div>
   <div class="current-body-temperature-display">current body temperature (in &deg;F)</div>
 </div>
