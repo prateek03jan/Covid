@@ -11,7 +11,7 @@ import { PersonInformation } from 'src/app/models/person';
 })
 export class PersonInfoCardComponent implements OnInit {
 
-  private getPersonInfoURL = 'http://smartscanner-api.azurewebsites.net/api/smartScanner/getPersonDetails';
+  private getPersonInfoURL = 'https://smartscanner-api.azurewebsites.net/api/smartScanner/getPersonDetails';
   personInformation?: PersonInformation;
   private trigger: Subject<void> = new Subject<void>();
   public multipleWebcamsAvailable = false;

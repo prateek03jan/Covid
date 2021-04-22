@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b0136f89-45a0-4a3a-ab93-665cc93d5040/resourceGroups/CloudHikers/providers/Microsoft.Web/sites/covidplus",
+    "appService.deploySubpath": "dist\\covid"
+}
