@@ -18,13 +18,13 @@ export class DashboardComponent implements OnInit {
   }
 
   updatePersonInformation(event: any) {
-    debugger;
     this.person = event;
-    this.openSnackBar('p', 'p');
     console.log('At parent level response from RetrievePersonInfo =>' + this.person);
     if ((this.person as any).exceptionMsg) {
       console.error((this.person as any).exceptionMsg);
-      this.openSnackBar((this.person as any).exceptionMsg, '');
+      this.openSnackBar((this.person as any).exceptionMsg);
+    } else {
+      this.openSnackBar('Data successfully retrieved from service');
     }
   }
 
@@ -32,8 +32,11 @@ export class DashboardComponent implements OnInit {
     this.showLoader = event as boolean;
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
+    setTimeout(() => {
+      this._snackBar.dismiss();
+    }, 3000);
   }
 
 }

@@ -4,7 +4,6 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { HttpClient } from '@angular/common/http';
 import { PersonInformation } from 'src/app/models/person';
 import { API_URLS } from 'src/app/models/api';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-person-info-card',
@@ -56,13 +55,14 @@ export class PersonInfoCardComponent implements OnInit {
       this.onPersonInfoReceived.emit(this.personInformation);
     } else {
       this.reset();
+      this.onPersonInfoReceived.emit(undefined);
     }
     this.onShowLoaderOnServiceCall.emit(false);
   }
 
   reset() {
-    // this.webcamImage = undefined;
-    // this.openWebCam();
+    this.webcamImage = undefined;
+    this.openWebCam();
   }
 
   public handleInitError(error: WebcamInitError): void {

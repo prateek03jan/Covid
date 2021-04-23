@@ -28,14 +28,14 @@
               <mat-form-field appearance="standard" class="demo-full-width">
                 <mat-label>First Name</mat-label>
                 <input matInput placeholder="Rakesh" [(ngModel)]="firstName" [formControl]="fName" required>
-                <mat-error *ngIf="fName.invalid">{{getErrorMessage(fName)}}</mat-error>
+                <mat-error *ngIf="fName.invalid">{{getErrorMessageFname(fName)}}</mat-error>
               </mat-form-field>
             </div>
             <div class="col-md">
               <mat-form-field appearance="standard" class="demo-full-width">
                 <mat-label>Last Name</mat-label>
                 <input matInput placeholder="Sharma" [formControl]="lName" [(ngModel)]="lastName" required>
-                <mat-error *ngIf="lName.invalid">{{getErrorMessage(lName)}}</mat-error>
+                <mat-error *ngIf="lName.invalid">{{getErrorMessageLname(lName)}}</mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -44,14 +44,14 @@
               <mat-form-field appearance="standard" class="demo-full-width">
                 <mat-label>AADHAR No.</mat-label>
                 <input matInput placeholder="456544179963" [formControl]="aadhar" [(ngModel)]="aadharId" required>
-                <mat-error *ngIf="aadhar.invalid">{{getErrorMessage(aadhar)}}</mat-error>
+                <mat-error *ngIf="aadhar.invalid">{{getErrorMessageAadhar(aadhar)}}</mat-error>
               </mat-form-field>
             </div>
             <div class="col-md">
               <mat-form-field appearance="standard" class="demo-full-width">
                 <mat-label>Associate ID</mat-label>
                 <input matInput placeholder="232323" [formControl]="associateId" [(ngModel)]="ctsAssociateId" required>
-                <mat-error *ngIf="associateId.invalid">{{getErrorMessage(associateId)}}</mat-error>
+                <mat-error *ngIf="associateId.invalid">{{getErrorMessageAssociateId(associateId)}}</mat-error>
               </mat-form-field>
             </div>
           </div>

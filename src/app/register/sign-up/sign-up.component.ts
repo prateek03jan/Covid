@@ -4,6 +4,7 @@ import { API_URLS } from 'src/app/models/api';
 import { PersonRegistration } from 'src/app/models/person';
 import { FileHandle } from '../directive/dragDrop.directive';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,8 +16,8 @@ export class SignUpComponent implements OnInit {
   files: FileHandle[] = [];
   fName = new FormControl('', [Validators.required]);
   lName = new FormControl('', [Validators.required]);
-  aadhar = new FormControl('', [Validators.required]);
-  associateId = new FormControl('', [Validators.required]);
+  aadhar = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{12}$/)]);
+  associateId = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]);
   person?: PersonRegistration;
   firstName?: string;
   lastName?: string;
@@ -25,22 +26,46 @@ export class SignUpComponent implements OnInit {
   base64textString?: string;
   isSuccess?: boolean = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
-  getErrorMessage(formControl: FormControl) {
+  getErrorMessageFname(formControl: FormControl) {
     let errorMessage: string = '';
     if (formControl.hasError('required')) {
-      errorMessage = 'This field is required';
-    }
-    if (formControl.hasError('email')) {
-      errorMessage = 'Invalid Email'
+      errorMessage = 'First Name is required';
     }
     return errorMessage;
   }
 
+  getErrorMessageLname(formControl: FormControl) {
+    let errorMessage: string = '';
+    if (formControl.hasError('required')) {
+      errorMessage = 'Last Name is required';
+    }
+    return errorMessage;
+  }
+
+  getErrorMessageAadhar(formControl: FormControl) {
+    let errorMessage: string = '';
+    if (formControl.hasError('required')) {
+      errorMessage = 'Aadhar is required';
+    } else if (formControl.hasError('pattern')) {
+      errorMessage = 'Enter 12 digits aadhar number';
+    }
+    return errorMessage;
+  }
+
+  getErrorMessageAssociateId(formControl: FormControl) {
+    let errorMessage: string = '';
+    if (formControl.hasError('required')) {
+      errorMessage = 'Associate Id is required';
+    } else if (formControl.hasError('pattern')) {
+      errorMessage = 'Enter 6 digits associate id';
+    }
+    return errorMessage;
+  }
 
   filesDropped(files: FileHandle[]): void {
     this.files = files;
@@ -63,7 +88,10 @@ export class SignUpComponent implements OnInit {
       this.isSuccess = res as boolean;
       console.info('Register Person response => ' + this.isSuccess);
       if (this.isSuccess === true) {
+        this.openSnackBar('Registration is successful...');
         this.resetForm();
+      } else {
+        this.openSnackBar('There is some error...' + (res as any).exceptionMsg);
       }
     });
   }
@@ -72,8 +100,8 @@ export class SignUpComponent implements OnInit {
     this.files = [];
     this.fName = new FormControl('', [Validators.required]);
     this.lName = new FormControl('', [Validators.required]);
-    this.aadhar = new FormControl('', [Validators.required]);
-    this.associateId = new FormControl('', [Validators.required]);
+    this.aadhar = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{12}$/)]);
+    this.associateId = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]);
     this.person = undefined;
     this.firstName = '';
     this.lastName = '';
@@ -97,5 +125,12 @@ export class SignUpComponent implements OnInit {
     var binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
     this.registerAssociate();
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
+    setTimeout(() => {
+      this._snackBar.dismiss();
+    }, 3000);
   }
 }

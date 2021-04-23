@@ -23,8 +23,10 @@
       <app-covid-history-timeline *ngIf="person" [covidHistory]="person?.covidInfo?.covidDetails?.covidHistory"></app-covid-history-timeline>
     </div>
 
-    <div class="col-sm" *ngIf="!person || !person?.personDetails">
-      <h1 class="jumbotron">Please click on camera to capture your image</h1>
+    <div class="col-sm instruction-pane" *ngIf="!person || !person?.personDetails">
+      <h1 class="jumbotron text-center">Please click on <button mat-mini-fab color="primary">
+        <mat-icon>camera</mat-icon>
+      </button> to capture your image</h1>
     </div>
   </div>
 </div>
