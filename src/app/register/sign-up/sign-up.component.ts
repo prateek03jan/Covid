@@ -54,7 +54,7 @@ export class SignUpComponent implements OnInit {
     this.person.adhaarNo = this.aadharId;
     this.person.image = this.base64textString;
     console.log(this.person);
-    // this.registerAssociateToCloud(this.person);
+    this.registerAssociateToCloud(this.person);
   }
 
   registerAssociateToCloud(person: PersonRegistration) {
