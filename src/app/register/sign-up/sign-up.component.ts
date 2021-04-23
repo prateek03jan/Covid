@@ -62,7 +62,25 @@ export class SignUpComponent implements OnInit {
     this.http.post(API_URLS.SAVE_PERSON_INFORMATION, person).subscribe(res => {
       this.isSuccess = res as boolean;
       console.info('Register Person response => ' + this.isSuccess);
+      if (this.isSuccess === true) {
+        this.resetForm();
+      }
     });
+  }
+
+  resetForm() {
+    this.files = [];
+    this.fName = new FormControl('', [Validators.required]);
+    this.lName = new FormControl('', [Validators.required]);
+    this.aadhar = new FormControl('', [Validators.required]);
+    this.associateId = new FormControl('', [Validators.required]);
+    this.person = undefined;
+    this.firstName = '';
+    this.lastName = '';
+    this.aadharId = '';
+    this.ctsAssociateId = '';
+    this.base64textString = '';
+    this.isSuccess = true;
   }
 
   handleFileSelect() {
