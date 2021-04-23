@@ -1,11 +1,11 @@
 export class PersonDetails {
+    id?: string;
     adhaarNo?: string;
     fName?: string;
-    id?: string;
     lName?: string;
+    associateId?: string;
     personId?: string;
     designation?: string;
-    associateId?: string;
     temperature?: Temperature;
     officeLocation?: string;
 }
@@ -40,4 +40,12 @@ export class VaccinationInfo {
 export class PersonInformation {
     personDetails?: PersonDetails;
     covidInfo?: CovidInfo;
+}
+
+export class PersonRegistration {
+    adhaarNo?: string;
+    fName?: string;
+    lName?: string;
+    associateId?: string;
+    image?: string;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { PersonInformation } from 'src/app/models/person';
 
 @Component({
@@ -9,13 +10,29 @@ import { PersonInformation } from 'src/app/models/person';
 export class DashboardComponent implements OnInit {
 
   person?: PersonInformation;
-  constructor() { }
+  showLoader?: boolean = false;
+
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   updatePersonInformation(event: any) {
+    debugger;
     this.person = event;
+    this.openSnackBar('p','p');
+    console.log('At parent level - ' + this.person);
+    if ((this.person as any).exceptionMsg) {
+      this.openSnackBar((this.person as any).exceptionMsg, '');
+    }
+  }
+
+  showLoaderOnServiceCall(event: any) {
+    this.showLoader = event as boolean;
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
 }

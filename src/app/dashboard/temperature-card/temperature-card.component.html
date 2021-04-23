@@ -1,5 +1,5 @@
-<div [class]="temperatureDetails?.currentTemp > temperatureDetails?.maxTemp ? 'red' : 'green'" 
-  class="outer-container">
+<div *ngIf="temperatureDetails?.currentTemp"
+ [class]="getTemperatureClass()" class="outer-container">
   <div class="icon-container">
     <mat-icon>thermostat</mat-icon>
   </div>

@@ -1,16 +1,13 @@
-<!-- <div class="col-xs-3">
-  <app-person-info-card class="custom-cards"></app-person-info-card>
-</div>
-<app-temperature-card class="custom-cards"></app-temperature-card> -->
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm">
-      <app-person-info-card (onPersonInfoReceived)="updatePersonInformation($event)"
+      <app-person-info-card (onPersonInfoReceived)="updatePersonInformation($event)" 
+      (onShowLoaderOnServiceCall)="showLoaderOnServiceCall($event)"
       class="custom-cards"></app-person-info-card>
     </div>
-    <div class="col-sm">
-      <app-temperature-card *ngIf="person?.personDetails?.temperature" [temperatureDetails]="person?.personDetails?.temperature"></app-temperature-card>
+    <div class="col-sm" *ngIf="person?.personDetails">
+      <app-temperature-card *ngIf="person?.personDetails?.temperature" 
+      [temperatureDetails]="person?.personDetails?.temperature"></app-temperature-card>
       <mat-card class="example-card" *ngFor="let item of person?.covidInfo?.covidDetails?.vaccinationInfoList">
         <mat-card-header>
           <div mat-card-avatar class="hospital-icon"></div>
@@ -22,8 +19,16 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="col-sm">
+    <div class="col-sm" *ngIf="person?.covidInfo">
       <app-covid-history-timeline *ngIf="person" [covidHistory]="person?.covidInfo?.covidDetails?.covidHistory"></app-covid-history-timeline>
     </div>
+
+    <div class="col-sm" *ngIf="!person || !person?.personDetails">
+      <h1 class="jumbotron">Please click on camera to capture your image</h1>
+    </div>
   </div>
+</div>
+
+<div class="spinner-div" *ngIf="showLoader">
+  <mat-spinner></mat-spinner>
 </div>

@@ -1,1 +1,69 @@
-<p>sign-up works!</p>
+<div class="container-fluid row-custom">
+  <div class="col-md">
+    <div *ngIf="!files.length" class="rmpm dropzone" appDrag (files)="filesDropped($event)">
+      <div class="text-wrapper">
+        <div class="centered">
+          <span class="material-icons">
+            file_upload
+          </span>
+        </div>
+        <h1 class="centered">Drag and drop your image here...</h1>
+      </div>
+    </div>
+    <div *ngFor="let file of files">
+      <img *ngIf="file" [src]="file.url" width="400px" height="400px">
+    </div>
+  </div>
+
+  <div class="col-md">
+    <mat-card>
+      <mat-card-title>
+        Register your information
+      </mat-card-title>
+
+      <mat-card-content>
+        <form>
+          <div class="row">
+            <div class="col-md">
+              <mat-form-field appearance="standard" class="demo-full-width">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Rakesh" [(ngModel)]="firstName" [formControl]="fName" required>
+                <mat-error *ngIf="fName.invalid">{{getErrorMessage(fName)}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md">
+              <mat-form-field appearance="standard" class="demo-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Sharma" [formControl]="lName" [(ngModel)]="lastName" required>
+                <mat-error *ngIf="lName.invalid">{{getErrorMessage(lName)}}</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <mat-form-field appearance="standard" class="demo-full-width">
+                <mat-label>AADHAR No.</mat-label>
+                <input matInput placeholder="456544179963" [formControl]="aadhar" [(ngModel)]="aadharId" required>
+                <mat-error *ngIf="aadhar.invalid">{{getErrorMessage(aadhar)}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md">
+              <mat-form-field appearance="standard" class="demo-full-width">
+                <mat-label>Associate ID</mat-label>
+                <input matInput placeholder="232323" [formControl]="associateId" [(ngModel)]="ctsAssociateId" required>
+                <mat-error *ngIf="associateId.invalid">{{getErrorMessage(associateId)}}</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" class="btn-block" (click)="handleFileSelect()">Register</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div class="spinner-div" *ngIf="!isSuccess">
+  <mat-spinner></mat-spinner>
+</div>

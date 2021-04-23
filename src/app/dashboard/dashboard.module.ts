@@ -11,6 +11,8 @@ import { TemperatureCardComponent } from './temperature-card/temperature-card.co
 import { CovidHistoryTimelineComponent } from './covid-history-timeline/covid-history-timeline.component';
 import { WebcamModule } from 'ngx-webcam';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MzdTimelineModule,
     WebcamModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ]
 })
 export class DashboardModule { }

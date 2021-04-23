@@ -9,28 +9,28 @@
 
 // Fonts
 @import 'https://fonts.googleapis.com/css?family=Material+Icons';
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
      
 $fontConfig: (
-  display-4: mat-typography-level(112px, 112px, 300, 'Lato', -0.0134em),
-  display-3: mat-typography-level(56px, 56px, 400, 'Lato', -0.0089em),
-  display-2: mat-typography-level(45px, 48px, 400, 'Lato', 0.0000em),
-  display-1: mat-typography-level(34px, 40px, 400, 'Lato', 0.0074em),
-  headline: mat-typography-level(24px, 32px, 400, 'Lato', 0.0000em),
-  title: mat-typography-level(20px, 32px, 700, 'Lato', 0.0075em),
-  subheading-2: mat-typography-level(16px, 28px, 400, 'Lato', 0.0094em),
-  subheading-1: mat-typography-level(15px, 24px, 700, 'Lato', 0.0067em),
-  body-2: mat-typography-level(14px, 24px, 700, 'Lato', 0.0179em),
-  body-1: mat-typography-level(14px, 20px, 400, 'Lato', 0.0179em),
-  button: mat-typography-level(14px, 14px, 700, 'Lato', 0.0893em),
-  caption: mat-typography-level(12px, 20px, 400, 'Lato', 0.0333em),
-  input: mat-typography-level(inherit, 1.125, 400, 'Lato', 1.5px)
+  display-4: mat-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
+  display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
+  display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0.0000em),
+  display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
+  headline: mat-typography-level(24px, 32px, 400, 'Roboto', 0.0000em),
+  title: mat-typography-level(20px, 32px, 500, 'Roboto', 0.0075em),
+  subheading-2: mat-typography-level(16px, 28px, 400, 'Roboto', 0.0094em),
+  subheading-1: mat-typography-level(15px, 24px, 500, 'Roboto', 0.0067em),
+  body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
+  body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
+  button: mat-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
+  caption: mat-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
+  input: mat-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px)
 );
 
 // Foreground Elements
 
 // Light Theme Text
-$dark-text: #202020;
+$dark-text: #000000;
 $dark-primary-text: rgba($dark-text, 0.87);
 $dark-accent-text: rgba($dark-primary-text, 0.54);
 $dark-disabled-text: rgba($dark-primary-text, 0.38);
@@ -85,15 +85,15 @@ $mat-dark-theme-foreground: (
 
 // Background config
 // Light bg
-$light-background:    #ffffff;
+$light-background:    #fafafa;
 $light-bg-darker-5:   darken($light-background, 5%);
 $light-bg-darker-10:  darken($light-background, 10%);
 $light-bg-darker-20:  darken($light-background, 20%);
 $light-bg-darker-30:  darken($light-background, 30%);
 $light-bg-lighter-5:  lighten($light-background, 5%);
-$dark-bg-tooltip:     lighten(#202020, 20%);
-$dark-bg-alpha-4:     rgba(#202020, 0.04);
-$dark-bg-alpha-12:    rgba(#202020, 0.12);
+$dark-bg-tooltip:     lighten(#2c2c2c, 20%);
+$dark-bg-alpha-4:     rgba(#2c2c2c, 0.04);
+$dark-bg-alpha-12:    rgba(#2c2c2c, 0.12);
 
 $mat-light-theme-background: (
   background:               $light-background,
@@ -114,13 +114,13 @@ $mat-light-theme-background: (
 );
 
 // Dark bg
-$dark-background:     #202020;
+$dark-background:     #2c2c2c;
 $dark-bg-lighter-5:   lighten($dark-background, 5%);
 $dark-bg-lighter-10:  lighten($dark-background, 10%);
 $dark-bg-lighter-20:  lighten($dark-background, 20%);
 $dark-bg-lighter-30:  lighten($dark-background, 30%);
-$light-bg-alpha-4:    rgba(#ffffff, 0.04);
-$light-bg-alpha-12:   rgba(#ffffff, 0.12);
+$light-bg-alpha-4:    rgba(#fafafa, 0.04);
+$light-bg-alpha-12:   rgba(#fafafa, 0.12);
 
 // Background palette for dark themes.
 $mat-dark-theme-background: (
@@ -147,19 +147,19 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #1c4e80;
-  --primary-lighter-color: #bbcad9;
-  --primary-darker-color: #113563;
+  --primary-color: #37474f;
+  --primary-lighter-color: #c3c8ca;
+  --primary-darker-color: #232f36;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 
 $mat-primary: (
-  main: #1c4e80,
-  lighter: #bbcad9,
-  darker: #113563,
-  200: #1c4e80, // For slide toggle,
+  main: #37474f,
+  lighter: #c3c8ca,
+  darker: #232f36,
+  200: #37474f, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
@@ -169,19 +169,19 @@ $mat-primary: (
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #0091d5;
-  --accent-lighter-color: #b3def2;
-  --accent-darker-color: #0074c4;
+  --accent-color: #607d8b;
+  --accent-lighter-color: #cfd8dc;
+  --accent-darker-color: #44606e;
   --text-accent-color: #{$light-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$light-primary-text};
 }
 
 $mat-accent: (
-  main: #0091d5,
-  lighter: #b3def2,
-  darker: #0074c4,
-  200: #0091d5, // For slide toggle,
+  main: #607d8b,
+  lighter: #cfd8dc,
+  darker: #44606e,
+  200: #607d8b, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
@@ -191,21 +191,21 @@ $mat-accent: (
 $theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
 body {
-  --warn-color: #ea6a47;
-  --warn-lighter-color: #f9d2c8;
-  --warn-darker-color: #e14d2f;
-  --text-warn-color: #{$dark-primary-text};
+  --warn-color: #f44336;
+  --warn-lighter-color: #fcc7c3;
+  --warn-darker-color: #ef2c22;
+  --text-warn-color: #{$light-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
 }
 
 $mat-warn: (
-  main: #ea6a47,
-  lighter: #f9d2c8,
-  darker: #e14d2f,
-  200: #ea6a47, // For slide toggle,
+  main: #f44336,
+  lighter: #fcc7c3,
+  darker: #ef2c22,
+  200: #f44336, // For slide toggle,
   contrast : (
-    main: $dark-primary-text,
+    main: $light-primary-text,
     lighter: $dark-primary-text,
     darker: $light-primary-text,
   )
@@ -241,6 +241,18 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
   font-size: 24px;
   font-family: 'Material Icons', 'Material Icons';  
   .mat-badge-content {
-    font-family: 'Lato';
+    font-family: 'Roboto';
   }
+}
+
+.spinner-div {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #f5f9fa;
+  height: 100%;
+  padding-top: 20%;
+  opacity: 0.4;
 }
