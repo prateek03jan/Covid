@@ -20,9 +20,10 @@ export class DashboardComponent implements OnInit {
   updatePersonInformation(event: any) {
     debugger;
     this.person = event;
-    this.openSnackBar('p','p');
-    console.log('At parent level - ' + this.person);
+    this.openSnackBar('p', 'p');
+    console.log('At parent level response from RetrievePersonInfo =>' + this.person);
     if ((this.person as any).exceptionMsg) {
+      console.error((this.person as any).exceptionMsg);
       this.openSnackBar((this.person as any).exceptionMsg, '');
     }
   }

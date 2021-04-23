@@ -58,8 +58,10 @@ export class SignUpComponent implements OnInit {
   }
 
   registerAssociateToCloud(person: PersonRegistration) {
+    console.log('Register person called');
     this.http.post(API_URLS.SAVE_PERSON_INFORMATION, person).subscribe(res => {
       this.isSuccess = res as boolean;
+      console.info('Register Person response => ' + this.isSuccess);
     });
   }
 

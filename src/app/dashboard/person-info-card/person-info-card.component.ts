@@ -40,10 +40,11 @@ export class PersonInfoCardComponent implements OnInit {
 
   public handleImage(webcamImage: WebcamImage): void {
     this.onShowLoaderOnServiceCall.emit(true);
-    console.info('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
     var obj = { image: this.webcamImage.imageAsBase64 };
+    console.log('Retrieve person called =>' + obj);
     this.http.post(API_URLS.RETRIEVE_PERSON_INFORMATION, obj).subscribe(res => {
+      console.log('Retrieve person response =>' + res);
       this.mapRetrievePersonInfoResponse(res);
     });
   }
