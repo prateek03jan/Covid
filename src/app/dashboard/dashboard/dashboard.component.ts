@@ -20,7 +20,9 @@ export class DashboardComponent implements OnInit {
   updatePersonInformation(event: any) {
     this.person = event;
     console.log('At parent level response from RetrievePersonInfo =>' + this.person);
-    if ((this.person as any).exceptionMsg) {
+    if (this.person === undefined) {
+      this.openSnackBar('Retake photo...');
+    } else if ((this.person as any).exceptionMsg) {
       console.error((this.person as any).exceptionMsg);
       this.openSnackBar((this.person as any).exceptionMsg);
     } else {
