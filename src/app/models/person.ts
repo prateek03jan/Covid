@@ -40,6 +40,8 @@ export class VaccinationInfo {
 export class PersonInformation {
     personDetails?: PersonDetails;
     covidInfo?: CovidInfo;
+    messageId?: string;
+    deviceId?: string;
 }
 
 export class PersonRegistration {

@@ -13,6 +13,7 @@ import { WebcamModule } from 'ngx-webcam';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SignalRService } from './service/signalr.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatSnackBarModule
+  ],
+  providers: [
+    SignalRService
   ]
 })
 export class DashboardModule { }

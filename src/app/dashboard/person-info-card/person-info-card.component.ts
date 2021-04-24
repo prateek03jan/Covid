@@ -4,6 +4,7 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { HttpClient } from '@angular/common/http';
 import { PersonInformation } from 'src/app/models/person';
 import { API_URLS } from 'src/app/models/api';
+import { SignalRService } from '../service/signalr.service';
 
 @Component({
   selector: 'app-person-info-card',
@@ -19,11 +20,24 @@ export class PersonInfoCardComponent implements OnInit {
   public errors: WebcamInitError[] = [];
   @Output() onPersonInfoReceived = new EventEmitter<PersonInformation>();
   @Output() onShowLoaderOnServiceCall = new EventEmitter<boolean>();
+  messageId?: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private signalRService: SignalRService) { }
 
   ngOnInit(): void {
     this.openWebCam();
+
+    this.signalRService.init();
+    this.signalRService.mxChipData.subscribe(data => {
+      let result = JSON.parse(data);
+      if (result.messageId === this.messageId) {
+        this.personInformation = result;
+      } else {
+        this.reset();
+        this.onPersonInfoReceived.emit(undefined);
+      }
+      this.onShowLoaderOnServiceCall.emit(false);
+    });
   }
 
   openWebCam() {
@@ -42,22 +56,10 @@ export class PersonInfoCardComponent implements OnInit {
     this.webcamImage = webcamImage;
     var obj = { image: this.webcamImage.imageAsBase64 };
     console.log('Retrieve person called =>' + obj);
-    this.http.post(API_URLS.RETRIEVE_PERSON_INFORMATION, obj).subscribe(res => {
+    this.http.post(API_URLS.UPLOAD_IMAGE_URL, obj).subscribe(res => {
       console.log('Retrieve person response =>' + res);
-      this.mapRetrievePersonInfoResponse(res);
+      this.messageId = res as string;
     });
-  }
-
-  private mapRetrievePersonInfoResponse(res: Object) {
-    this.personInformation = res;
-    console.log(this.personInformation);
-    if (this.personInformation?.personDetails) {
-      this.onPersonInfoReceived.emit(this.personInformation);
-    } else {
-      this.reset();
-      this.onPersonInfoReceived.emit(undefined);
-    }
-    this.onShowLoaderOnServiceCall.emit(false);
   }
 
   reset() {
