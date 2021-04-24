@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Temperature } from 'src/app/models/person';
+import { PersonDetails, PersonInformation } from 'src/app/models/person';
 
 @Component({
   selector: 'app-temperature-card',
@@ -8,7 +8,7 @@ import { Temperature } from 'src/app/models/person';
 })
 export class TemperatureCardComponent implements OnInit {
 
-  @Input() temperatureDetails?: Temperature;
+  @Input() personInformation?: PersonDetails;
 
   constructor() { }
 
@@ -16,9 +16,9 @@ export class TemperatureCardComponent implements OnInit {
   }
 
   getTemperatureClass(): string {
-    if (this.temperatureDetails != undefined) {
-      return (this.temperatureDetails?.currentTemp || '') >
-        (this.temperatureDetails?.maxTemp || '') ? 'red' : 'green';
+    if (this.personInformation != undefined) {
+      return (this.personInformation?.currentTemp || '') >
+        (this.personInformation?.maxTemp || '') ? 'red' : 'green';
     }
     return 'red';
   }

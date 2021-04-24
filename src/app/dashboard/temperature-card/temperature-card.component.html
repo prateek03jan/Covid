@@ -1,8 +1,8 @@
-<div *ngIf="temperatureDetails?.currentTemp"
+<div *ngIf="personInformation?.currentTemp"
  [class]="getTemperatureClass()" class="outer-container">
   <div class="icon-container">
     <mat-icon>thermostat</mat-icon>
   </div>
-  <div class="current-body-temperature">{{temperatureDetails?.currentTemp}}</div>
+  <div class="current-body-temperature">{{personInformation?.currentTemp}}</div>
   <div class="current-body-temperature-display">current body temperature (in &deg;F)</div>
 </div>

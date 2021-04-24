@@ -16,6 +16,9 @@ export class SignUpComponent implements OnInit {
   files: FileHandle[] = [];
   fName = new FormControl('', [Validators.required]);
   lName = new FormControl('', [Validators.required]);
+  designationFc = new FormControl('', [Validators.required]);
+  officeLocationFc = new FormControl('', [Validators.required]);
+  currentTempFc = new FormControl('', [Validators.required]);
   aadhar = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{12}$/)]);
   associateId = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]);
   person?: PersonRegistration;
@@ -25,6 +28,9 @@ export class SignUpComponent implements OnInit {
   ctsAssociateId?: string;
   base64textString?: string;
   isSuccess?: boolean = true;
+  designation?: string;
+  officeLocation?: string;
+  currentTemperature?: number;
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
 
@@ -43,6 +49,30 @@ export class SignUpComponent implements OnInit {
     let errorMessage: string = '';
     if (formControl.hasError('required')) {
       errorMessage = 'Last Name is required';
+    }
+    return errorMessage;
+  }
+
+  getErrorMessageCurrentTemperature(formControl: FormControl) {
+    let errorMessage: string = '';
+    if (formControl.hasError('required')) {
+      errorMessage = 'Current Temperature is required';
+    }
+    return errorMessage;
+  }
+
+  getErrorMessageDesignation(formControl: FormControl) {
+    let errorMessage: string = '';
+    if (formControl.hasError('required')) {
+      errorMessage = 'Designation is required';
+    }
+    return errorMessage;
+  }
+
+  getErrorMessageOfficeLocation(formControl: FormControl) {
+    let errorMessage: string = '';
+    if (formControl.hasError('required')) {
+      errorMessage = 'Office location is required';
     }
     return errorMessage;
   }
@@ -77,7 +107,10 @@ export class SignUpComponent implements OnInit {
     this.person.lName = this.lastName;
     this.person.associateId = this.ctsAssociateId;
     this.person.adhaarNo = this.aadharId;
+    this.person.officeLocation = this.officeLocation;
+    this.person.designation = this.designation;
     this.person.image = this.base64textString;
+    this.person.currentTemp = this.currentTemperature;
     console.log(this.person);
     this.registerAssociateToCloud(this.person);
   }
@@ -100,6 +133,8 @@ export class SignUpComponent implements OnInit {
     this.files = [];
     this.fName = new FormControl('', [Validators.required]);
     this.lName = new FormControl('', [Validators.required]);
+    this.designationFc = new FormControl('', [Validators.required]);
+    this.officeLocationFc = new FormControl('', [Validators.required]);
     this.aadhar = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{12}$/)]);
     this.associateId = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]);
     this.person = undefined;
@@ -107,6 +142,8 @@ export class SignUpComponent implements OnInit {
     this.lastName = '';
     this.aadharId = '';
     this.ctsAssociateId = '';
+    this.designation = '';
+    this.officeLocation = '';
     this.base64textString = '';
     this.isSuccess = true;
   }

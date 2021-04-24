@@ -6,11 +6,7 @@ export class PersonDetails {
     associateId?: string;
     personId?: string;
     designation?: string;
-    temperature?: Temperature;
     officeLocation?: string;
-}
-
-export class Temperature {
     maxTemp?: number;
     currentTemp?: number;
 }
@@ -50,4 +46,7 @@ export class PersonRegistration {
     lName?: string;
     associateId?: string;
     image?: string;
+    designation?: string;
+    officeLocation?: string;
+    currentTemp?: number;
 }

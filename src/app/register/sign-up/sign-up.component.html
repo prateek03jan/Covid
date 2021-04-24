@@ -39,6 +39,7 @@
               </mat-form-field>
             </div>
           </div>
+
           <div class="row">
             <div class="col-md">
               <mat-form-field appearance="standard" class="demo-full-width">
@@ -52,6 +53,35 @@
                 <mat-label>Associate ID</mat-label>
                 <input matInput placeholder="232323" [formControl]="associateId" [(ngModel)]="ctsAssociateId" required>
                 <mat-error *ngIf="associateId.invalid">{{getErrorMessageAssociateId(associateId)}}</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md">
+              <mat-form-field appearance="standard" class="demo-full-width">
+                <mat-label>Designation</mat-label>
+                <input matInput placeholder="Manager" [formControl]="designationFc" [(ngModel)]="designation" required>
+                <mat-error *ngIf="designationFc.invalid">{{getErrorMessageDesignation(designationFc)}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md">
+              <mat-form-field appearance="standard" class="demo-full-width">
+                <mat-label>Office Location</mat-label>
+                <input matInput placeholder="Kolkata Unitech" [formControl]="officeLocationFc"
+                  [(ngModel)]="officeLocation" required>
+                <mat-error *ngIf="officeLocationFc.invalid">{{getErrorMessageOfficeLocation(officeLocationFc)}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">
+              <mat-form-field appearance="standard" class="demo-full-width">
+                <mat-label>Current Temperature</mat-label>
+                <input matInput placeholder="95.3" [formControl]="currentTempFc"
+                [(ngModel)]="currentTemperature" required>
+                <mat-error *ngIf="currentTempFc.invalid">{{getErrorMessageCurrentTemperature(currentTempFc)}}</mat-error>
               </mat-form-field>
             </div>
           </div>
