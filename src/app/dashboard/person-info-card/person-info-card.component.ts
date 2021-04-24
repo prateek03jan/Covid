@@ -30,10 +30,11 @@ export class PersonInfoCardComponent implements OnInit {
     this.signalRService.init();
     console.log('Signal R Invoked');
     this.signalRService.mxChipData.subscribe(data => {
-      console.log('Signal R Subscription Data =>' + data);
       let result = JSON.parse(data);
+      console.log('Signal R Subscription Data =>' + data);
       if (result.messageId === this.messageId) {
         this.personInformation = result;
+        this.onPersonInfoReceived.emit(this.personInformation);
       } else {
         this.reset();
         this.onPersonInfoReceived.emit(undefined);
