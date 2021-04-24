@@ -16,9 +16,10 @@ export class TemperatureCardComponent implements OnInit {
   }
 
   getTemperatureClass(): string {
-    // if (this.temperatureDetails != undefined) {
-    //   return this.temperatureDetails?.currentTemp > this.temperatureDetails?.maxTemp ? 'red' : 'green';
-    // }
+    if (this.temperatureDetails != undefined) {
+      return (this.temperatureDetails?.currentTemp || '') >
+        (this.temperatureDetails?.maxTemp || '') ? 'red' : 'green';
+    }
     return 'red';
   }
 }
