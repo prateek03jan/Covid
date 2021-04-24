@@ -28,7 +28,9 @@ export class PersonInfoCardComponent implements OnInit {
     this.openWebCam();
 
     this.signalRService.init();
+    console.log('Signal R Invoked');
     this.signalRService.mxChipData.subscribe(data => {
+      console.log('Signal R Subscription Data =>' + data);
       let result = JSON.parse(data);
       if (result.messageId === this.messageId) {
         this.personInformation = result;
@@ -55,9 +57,9 @@ export class PersonInfoCardComponent implements OnInit {
     this.onShowLoaderOnServiceCall.emit(true);
     this.webcamImage = webcamImage;
     var obj = { image: this.webcamImage.imageAsBase64 };
-    console.log('Retrieve person called =>' + obj);
+    console.log('Upload image API called here =>' + obj);
     this.http.post(API_URLS.UPLOAD_IMAGE_URL, obj).subscribe(res => {
-      console.log('Retrieve person response =>' + res);
+      console.log('Upload image response response =>' + res);
       this.messageId = res as string;
     });
   }
